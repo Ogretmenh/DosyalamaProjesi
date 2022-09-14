@@ -19,12 +19,15 @@ namespace O2_DosyalamaProjesi
 
         public string Konum { get;  set; }
 
+        public long Boyut { get; set; }
+
         public Dosya(FileInfo fileInfo)
         {
             
             this.DosyaAdi = fileInfo.Name;
             this.Uzanti = fileInfo.Extension;
             this.Konum = fileInfo.FullName;
+            this.Boyut = fileInfo.Length;
         }
 
         public DateTime GecerlilikTarihi { get; set; }
