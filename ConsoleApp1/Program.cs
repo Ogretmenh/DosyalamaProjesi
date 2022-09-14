@@ -40,6 +40,8 @@ namespace ConsoleApp1
             DosyalamaProgram.AktifDosyalamaProgram.YedektenCagir(kaynak, "Yedek");
 
 
+
+
             Console.ReadLine();
         }
     }
