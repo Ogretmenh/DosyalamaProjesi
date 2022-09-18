@@ -28,6 +28,7 @@ namespace O2_DosyalamaProjesi
             this.Uzanti = fileInfo.Extension;
             this.Konum = fileInfo.FullName;
             this.Boyut = fileInfo.Length;
+            this.GecerlilikTarihi = DateTime.Now.AddDays(7);
         }
 
         public DateTime GecerlilikTarihi { get; set; }
@@ -38,7 +39,7 @@ namespace O2_DosyalamaProjesi
         {
             get
             {
-                if (this.GecerlilikTarihi > DateTime.Now)
+                if (this.GecerlilikTarihi < DateTime.Now)
                 {
                     return true;
                 }

@@ -13,28 +13,23 @@ namespace DosyalamaProjesi.Arayüz
 {
     public partial class DosyaÖnizleme : Form
     {
-        public DosyaÖnizleme(string kaynak, string hedef)
+        public DosyaÖnizleme(List<DosyaTurleri> DosyaTurleri)
         {
             InitializeComponent();
-            Kaynak = kaynak;
-            Hedef = hedef;
+            _dosyalarım = DosyaTurleri;
+
         }
         private List<DosyaTurleri> _dosyalarım;
-        private string Kaynak { get; }
-        private string Hedef { get; }
+
 
         private void DosyaÖnizleme_Load(object sender, EventArgs e)
         {
-            DosyalamaProgram.AktifDosyalamaProgram.DosyalariTurlerineGoreAyir(Kaynak, Hedef);
-            _dosyalarım = DosyalamaProgram.AktifDosyalamaProgram.DosyaTurleri;
-
+            DosyalamaProgram.AktifDosyalamaProgram.TarihiGeceniTasi(@"C:\Users\hakan\Desktop\Dosyalama App\Hedef");
             foreach (DosyaTurleri item in _dosyalarım)
             {
                 cmbUzantılar.Items.Add(item.DosyaTuru);
             }
-
         }
-
         private void cmbUzantılar_SelectedIndexChanged(object sender, EventArgs e)
         {
             lstwÖnizleme.Items.Clear(); 
@@ -48,7 +43,7 @@ namespace DosyalamaProjesi.Arayüz
                         {
                             dosya.DosyaAdi,
                             dosya.Boyut.ToString(),
-                            dosya.GecerlilikTarihi.ToString(),
+                            dosya.GecerlilikTarihi.ToShortDateString(),
                             dosya.DosyaAciklama
                         };
                         var veri = new ListViewItem(satır);
@@ -60,8 +55,8 @@ namespace DosyalamaProjesi.Arayüz
 
         private void btnTarihDüzenle_Click(object sender, EventArgs e)
         {
-            string tarih = dtpGeçerlilikTarihi.Text;
-            lstwÖnizleme.SelectedItems[0].SubItems[clmGeçerlilikTarihi.Index].Text = tarih;
+            DateTime tarih = dtpGeçerlilikTarihi.Value;
+            lstwÖnizleme.SelectedItems[0].SubItems[clmGeçerlilikTarihi.Index].Text = tarih.ToShortDateString();
             DosyaDüzenleme();
         }
 
@@ -82,5 +77,36 @@ namespace DosyalamaProjesi.Arayüz
             }
         }
 
+        private void btnAçıklamaDüzenle_Click(object sender, EventArgs e)
+        {
+            lstwÖnizleme.SelectedItems[0].SubItems[clmAçıklama.Index].Text = txtAçıklama.Text;
+            AçıklamaDüzenleme();
+            txtAçıklama.Clear();
+        }
+
+        private void AçıklamaDüzenleme()
+        {
+            foreach (DosyaTurleri item in _dosyalarım)
+            {
+                if (item.DosyaTuru == cmbUzantılar.SelectedItem.ToString())
+                {
+                    foreach (Dosya dosya in item.Dosyalar)
+                    {
+                        if (dosya.DosyaAdi == lstwÖnizleme.SelectedItems[0].SubItems[clmAd.Index].Text)
+                        {
+                            dosya.DosyaAciklama = txtAçıklama.Text;
+                        }
+                    }
+                }
+            }
+        }
+
+        private void btnYedekle_Click(object sender, EventArgs e)
+        {
+            Form yedekle = new Yedeklemeİşlemi(_dosyalarım);
+            yedekle.ShowDialog();
+            
+            
+        }
     }
 }

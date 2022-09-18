@@ -1,4 +1,5 @@
-﻿using System;
+﻿using O2_DosyalamaProjesi;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -37,10 +38,22 @@ namespace DosyalamaProjesi.Arayüz
         {
             string kaynak = @"C:\Users\hakan\Desktop\Dosyalama App\DataBase";//txtKaynakGöster.Text;
             string hedef = @"C:\Users\hakan\Desktop\Dosyalama App\Hedef"; // txtTaşınacakDizin.Text;
-
-            Form frm = new DosyaÖnizleme(kaynak,hedef);
+            DosyalamaProgram.AktifDosyalamaProgram.DosyalariTurlerineGoreAyir(kaynak, hedef);
+            Form frm = new DosyaÖnizleme(DosyalamaProgram.AktifDosyalamaProgram.DosyaTurleri);
             this.Hide();
             frm.ShowDialog();
+            this.Show();
+            DosyalamaProgram.AktifDosyalamaProgram.DosyaTurleri.Clear();
         }
+
+        private void btnYedektenÇağır_Click(object sender, EventArgs e)
+        {
+            Form yedekleme = new Yedeklemeİşlemi();
+            this.Hide();
+            yedekleme.ShowDialog();
+            DosyalamaProgram.AktifDosyalamaProgram.DosyaTurleri.Clear();
+            this.Show();
+        }
+
     }
 }

@@ -24,13 +24,19 @@ namespace O2_DosyalamaProjesi
         internal List<Dosya> TarihiGecenDosyalariGetir()
         {
             List<Dosya> tarihiGecenDosyaList = new List<Dosya>();
-            foreach (Dosya item in this.Dosyalar)
+            for(int i = 0; i < this.Dosyalar.Count; i++)
             {
-                if (item.TarihinGectiMi)
+                if (this.Dosyalar[i].TarihinGectiMi)
                 {
-                    tarihiGecenDosyaList.Add(item);
-                    this.Dosyalar.Remove(item);
+                    tarihiGecenDosyaList.Add(this.Dosyalar[i]);
+                    this.Dosyalar.Remove(this.Dosyalar[i]);
+                    i = 0;
                 }
+                if(this.Dosyalar.Count == 0)
+                {
+                    break;
+                }
+                
             }
             return tarihiGecenDosyaList;
         }

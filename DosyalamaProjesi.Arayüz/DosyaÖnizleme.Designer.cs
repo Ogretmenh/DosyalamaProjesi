@@ -33,12 +33,13 @@
             this.lstwÖnizleme = new System.Windows.Forms.ListView();
             this.clmAd = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmBoyut = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.clmAçıklama = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmGeçerlilikTarihi = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.txtAçıklama = new System.Windows.Forms.TextBox();
-            this.btnTarihDüzenle = new System.Windows.Forms.Button();
-            this.btnAçıklamaDüzenle = new System.Windows.Forms.Button();
+            this.clmAçıklama = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.dtpGeçerlilikTarihi = new System.Windows.Forms.DateTimePicker();
+            this.btnTarihDüzenle = new System.Windows.Forms.Button();
+            this.txtAçıklama = new System.Windows.Forms.TextBox();
+            this.btnAçıklamaDüzenle = new System.Windows.Forms.Button();
+            this.btnYedekle = new System.Windows.Forms.Button();
             this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -50,11 +51,12 @@
             this.flowLayoutPanel1.Controls.Add(this.btnTarihDüzenle);
             this.flowLayoutPanel1.Controls.Add(this.txtAçıklama);
             this.flowLayoutPanel1.Controls.Add(this.btnAçıklamaDüzenle);
+            this.flowLayoutPanel1.Controls.Add(this.btnYedekle);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(689, 617);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(679, 667);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
             // cmbUzantılar
@@ -93,23 +95,22 @@
             this.clmBoyut.Text = "Boyut (Byte)";
             this.clmBoyut.Width = 73;
             // 
-            // clmAçıklama
-            // 
-            this.clmAçıklama.Text = "Açıklama";
-            this.clmAçıklama.Width = 328;
-            // 
             // clmGeçerlilikTarihi
             // 
             this.clmGeçerlilikTarihi.Text = "Geçerlilik Tarihi";
             this.clmGeçerlilikTarihi.Width = 125;
             // 
-            // txtAçıklama
+            // clmAçıklama
             // 
-            this.txtAçıklama.Location = new System.Drawing.Point(3, 441);
-            this.txtAçıklama.Multiline = true;
-            this.txtAçıklama.Name = "txtAçıklama";
-            this.txtAçıklama.Size = new System.Drawing.Size(204, 129);
-            this.txtAçıklama.TabIndex = 3;
+            this.clmAçıklama.Text = "Açıklama";
+            this.clmAçıklama.Width = 328;
+            // 
+            // dtpGeçerlilikTarihi
+            // 
+            this.dtpGeçerlilikTarihi.Location = new System.Drawing.Point(3, 386);
+            this.dtpGeçerlilikTarihi.Name = "dtpGeçerlilikTarihi";
+            this.dtpGeçerlilikTarihi.Size = new System.Drawing.Size(204, 20);
+            this.dtpGeçerlilikTarihi.TabIndex = 6;
             // 
             // btnTarihDüzenle
             // 
@@ -121,6 +122,14 @@
             this.btnTarihDüzenle.UseVisualStyleBackColor = true;
             this.btnTarihDüzenle.Click += new System.EventHandler(this.btnTarihDüzenle_Click);
             // 
+            // txtAçıklama
+            // 
+            this.txtAçıklama.Location = new System.Drawing.Point(3, 441);
+            this.txtAçıklama.Multiline = true;
+            this.txtAçıklama.Name = "txtAçıklama";
+            this.txtAçıklama.Size = new System.Drawing.Size(204, 129);
+            this.txtAçıklama.TabIndex = 3;
+            // 
             // btnAçıklamaDüzenle
             // 
             this.btnAçıklamaDüzenle.Location = new System.Drawing.Point(3, 576);
@@ -129,19 +138,23 @@
             this.btnAçıklamaDüzenle.TabIndex = 5;
             this.btnAçıklamaDüzenle.Text = "Açıklama Düzenle";
             this.btnAçıklamaDüzenle.UseVisualStyleBackColor = true;
+            this.btnAçıklamaDüzenle.Click += new System.EventHandler(this.btnAçıklamaDüzenle_Click);
             // 
-            // dtpGeçerlilikTarihi
+            // btnYedekle
             // 
-            this.dtpGeçerlilikTarihi.Location = new System.Drawing.Point(3, 386);
-            this.dtpGeçerlilikTarihi.Name = "dtpGeçerlilikTarihi";
-            this.dtpGeçerlilikTarihi.Size = new System.Drawing.Size(204, 20);
-            this.dtpGeçerlilikTarihi.TabIndex = 6;
+            this.btnYedekle.Location = new System.Drawing.Point(3, 605);
+            this.btnYedekle.Name = "btnYedekle";
+            this.btnYedekle.Size = new System.Drawing.Size(124, 23);
+            this.btnYedekle.TabIndex = 7;
+            this.btnYedekle.Text = "Yedekle";
+            this.btnYedekle.UseVisualStyleBackColor = true;
+            this.btnYedekle.Click += new System.EventHandler(this.btnYedekle_Click);
             // 
             // DosyaÖnizleme
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(689, 617);
+            this.ClientSize = new System.Drawing.Size(679, 667);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Name = "DosyaÖnizleme";
             this.Text = "Dosya Önizleme";
@@ -165,5 +178,6 @@
         private System.Windows.Forms.Button btnTarihDüzenle;
         private System.Windows.Forms.TextBox txtAçıklama;
         private System.Windows.Forms.Button btnAçıklamaDüzenle;
+        private System.Windows.Forms.Button btnYedekle;
     }
 }

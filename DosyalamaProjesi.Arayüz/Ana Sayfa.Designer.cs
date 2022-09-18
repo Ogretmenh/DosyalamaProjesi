@@ -33,6 +33,7 @@
             this.txtTaşınacakDizin = new System.Windows.Forms.TextBox();
             this.btnTaşınacakDizin = new System.Windows.Forms.Button();
             this.btnDosyalarıDüzenle = new System.Windows.Forms.Button();
+            this.btnYedektenÇağır = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtKaynakGöster
@@ -83,12 +84,23 @@
             this.btnDosyalarıDüzenle.UseVisualStyleBackColor = true;
             this.btnDosyalarıDüzenle.Click += new System.EventHandler(this.btnDosyalarıDüzenle_Click);
             // 
+            // btnYedektenÇağır
+            // 
+            this.btnYedektenÇağır.Location = new System.Drawing.Point(502, 93);
+            this.btnYedektenÇağır.Name = "btnYedektenÇağır";
+            this.btnYedektenÇağır.Size = new System.Drawing.Size(113, 23);
+            this.btnYedektenÇağır.TabIndex = 3;
+            this.btnYedektenÇağır.Text = "Yedekten Çağır";
+            this.btnYedektenÇağır.UseVisualStyleBackColor = true;
+            this.btnYedektenÇağır.Click += new System.EventHandler(this.btnYedektenÇağır_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(621, 101);
+            this.ClientSize = new System.Drawing.Size(640, 206);
+            this.Controls.Add(this.btnYedektenÇağır);
             this.Controls.Add(this.btnDosyalarıDüzenle);
             this.Controls.Add(this.btnTaşınacakDizin);
             this.Controls.Add(this.btnGetir);
@@ -107,6 +119,7 @@
         private System.Windows.Forms.TextBox txtTaşınacakDizin;
         private System.Windows.Forms.Button btnTaşınacakDizin;
         private System.Windows.Forms.Button btnDosyalarıDüzenle;
+        private System.Windows.Forms.Button btnYedektenÇağır;
     }
 }
 
